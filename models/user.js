@@ -5,18 +5,18 @@ var jwt = require('jwt-simple');
 
 var Schema = mongoose.Schema;
 autoIncrement=require('mongoose-auto-increment');
-var connection=mongoose.createConnection("mongodb://localhost/node-rest-auth")
+var connection=mongoose.connect("mongodb://localhost/node-rest-auth")
 autoIncrement.initialize(connection);
 var bcrypt= require('bcrypt');
 var UserSchema = new Schema({
 	name:{
 		type:String,
 		unique:true,
-		required:true
+		//required:true
 	},
 	password:{
 		type: String,
-		required:true
+		//required:true
 	},
 	FirstName:{
 		type:String,
@@ -26,13 +26,14 @@ var UserSchema = new Schema({
 	email:{
 		type:String,
 		unique:true,
-		required:true
+		//required:true
 	},
 	Online:Boolean,
+	facebook:Object,
 	googleId:String,
 	userType:{
 	type:Boolean,
-	required:true
+	//required:true
 	}, //0 for Patient and 1 for Doctor
 	Speciality:String,
 });
@@ -80,13 +81,15 @@ UserSchema.methods.comparePassword = function(passw,cb){
 
 
 };
-var addUser=mongoose.model('addUser',UserSchema);
+var addUser=connection.model('addUser',UserSchema);
 
-
+exports.addUser=addUser;
 exports.userSignUp=function(req,res){
+	console.log("cameuphere")
 	if(!req.body.name || !req.body.password){
 		res.json({success:false,msg:'Please pass name and password.'});
 	}else{
+		console.log("cameupheretoo");
 		var newUser = new addUser({
 			name:req.body.name,
 			password:req.body.password,
@@ -97,12 +100,17 @@ exports.userSignUp=function(req,res){
 			userType:req.body.userType,
 			Speciality:req.body.Speciality
 		});
+		console.log(newUser);
+		console.log("cameuphere3")
 		newUser.save(function(err){
+			console.log("cameuphere5")
 			if(err){
 				return res.json({success:false,msg:'Username already exists.'});
 			}
 			res.json({success:true,msg:'successful created new user.'});
+			console.log("cameuphere4")
 		});
+		console.log("nothing works")
 	}
 }
 exports.findusertype=function(username,cb){

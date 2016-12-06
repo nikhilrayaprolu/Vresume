@@ -5,5 +5,9 @@ app.config(function($routeProvider){
 		controller:'SignUpController'
 
 	})
+	.when('/signupfacebook',{
+		templateUrl:'html/signupfacebook.html',
+		controller:'facebookcontroller'
+	})
 	
 })
