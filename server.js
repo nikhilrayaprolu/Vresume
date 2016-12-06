@@ -27,6 +27,7 @@ var port = process.env.PORT || 8082;
 var jwt = require('jwt-simple');
 //modules load
 var addUser=require("./models/user");
+var addCV=require("./models/cvuser");
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 app.use(morgan('dev'));
@@ -56,7 +57,7 @@ app.get('/auth/google/callback',
     // Successful authentication, redirect home.
     res.redirect('/');
 });
-
+app.post('/cvdetails',addCV.addcvdetails)
 app.get('/',function(req,res){
   res.sendfile(__dirname + '/public/html/index.html');
 })

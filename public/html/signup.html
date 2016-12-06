@@ -1,110 +1,114 @@
 <main class="" style="" id="userview">
 <div class="container">
  <div  id="login-page" class="row" style="height:800px" >
-   <div class="col s3 offset-s2 z-depth-4 card-panel z-depth-4 " >
+   <div class="row">
+   <div class="col-md-4" >
+    <div class="jumbotron">
     <form class="login-form" ng-controller="SignInController">
-      <div>
+
         <div >
-          <h4 class="center login-form-text">Login</h4>
+          <h2 class="center login-form-text">Login</h2>
         </div>
-      </div>
-      <div >
-        <div >
+
+        <div class="form-group">
           <i ></i>
-          <input id="username" ng-model="name" type="text">
           <label for="username" class>Username</label>
+          <input id="username" ng-model="name" type="text">
+
         </div>
-      </div>
-      <div >
-        <div >
+
+        <div class="form-group">
           <i ></i>
-          <input id="password" type="password" ng-model="password">
           <label for="password">Password</label>
+          <input id="password" type="password" ng-model="password">
+
         </div>
-      </div>
-      <div >          
+         
         <div class="input-field   login-text">
+
           <input type="checkbox" id="remember-me" />
           <label for="remember-me">Remember me</label>
         </div>
-      </div>
-      <div >
+
         <div class="input-field " ng-click="submit()">
-          <a href="index.html" class="btn waves-effect waves-light ">Login</a>
+          <a href="index.html" class="btn btn-success">Login</a>
         </div>
-      </div>
-      <div  >
+
         <div class="input-field ">
-          <p class="margin right-align medium-small"><a href="#" ng-click="forgotpassword()">Forgot password ?</a></p>
+          <p class="btn btn-link"><a href="#" ng-click="forgotpassword()">Forgot password ?</a></p>
         </div>          
-      </div>
+
       
     </form>
-
+  </div>
 </div>
 
 
-  <div  class="col s5 offset-s2 card-panel ">
-    <form class="login-form" ng-controller="SignUpController">
-      <div  >
-        <div class="input-field  center">
-          <h4>Register</h4>
+  <div class="col-md-6" >
+   <div class="jumbotron" >
+   <h2>Register</h2>
+    <form class="form-horizontal login-form" ng-controller="SignUpController">
           <p class="center">Join to our community now !</p>
-        </div>
-      </div>
-      <div >
-        <div class="input-field ">
-          <i class="mdi-social-person-outline prefix"></i>
-          <input id="username1" type="text" ng-model="name">
-          <label for="username1" class="center-align">Username</label>
-        </div>
-      </div>
-      <div >
-        <div class="input-field ">
-          <i class="mdi-social-person-outline prefix"></i>
-          <input id="username2" type="text" ng-model="FirstName">
-          <label for="username2" class="center-align">FirstName</label>
-        </div>
-      </div>
 
-      <div >
-        <div class="input-field ">
-          <i class="mdi-social-person-outline prefix"></i>
+
+        <div class="form-group">
+          <label for="username1" class="control-label col-md-2">Username</label>
+          <div class="col-md-10">
+          <input id="username1" type="text" ng-model="name">
+        </div>
+        </div>
+
+        <div class="form-group">
+          <label for="username2" class="control-label col-md-2">FirstName</label>
+          <div class="col-md-10">
+          <input id="username2" type="text" ng-model="FirstName">
+          </div>
+        </div>
+
+
+
+        <div class="form-group">
+          <label for="username3" class="control-label col-md-2">LastName</label>
+          <div class="col-md-10">
           <input id="username3" type="text" ng-model="LastName">
-          <label for="username3" class="center-align">LastName</label>
         </div>
-      </div>
+        </div>
       
-      <div >
-        <div class="input-field ">
-          <i class="mdi-communication-email prefix"></i>
+      
+
+        <div class="form-group">
+          <label for="email" class="control-label col-md-2">Email</label>
+          <div class="col-md-10">
           <input id="email" type="email" ng-model="email">
-          <label for="email" class="center-align">Email</label>
         </div>
-      </div>
-      <div >
-        <div class="input-field ">
-          <i class="mdi-action-lock-outline prefix"></i>
+        </div>
+
+
+        <div class="form-group">
+          <label for="password" class="control-label col-md-2">Password</label>
+          <div class="col-md-10">
           <input id="password" type="password" ng-model="password">
-          <label for="password">Password</label>
         </div>
-      </div>
-      <div >
-        <div class="input-field ">
-          <i class="mdi-action-lock-outline prefix"></i>
+        </div>
+
+  
+        <div class="form-group">
+          <label for="password-again" class="control-label col-md-2">Password again</label>
+          <div class="col-md-10">
           <input id="password-again" type="password" ng-model="password2">
-          <label for="password-again">Password again</label>
         </div>
-      </div>
-      <div  >
+        </div>
+
         <div  ng-click="submit()">
-          <a href="index.html" class="btn waves-effect waves-light ">Register Now</a>
+          <a href="index.html" class="btn btn-success ">Register Now</a>
         </div>
+
         <br>
-        <a href="/termsandconditions">Terms and conditions</a>
-      </div>
-      
+        <a href="/termsandconditions" class="btn btn-link">Terms and conditions</a>
+
     </form>
+  </div>
+    </div>
 
   </div>
   
