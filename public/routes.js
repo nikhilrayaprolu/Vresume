@@ -13,6 +13,13 @@ app.config(function($routeProvider){
 		templateUrl:'html/cvdetails-3.html',
 		controller:'CvDetailsController-3'
 	})
-	
+	.when('/signupfacebook',{
+		templateUrl:'html/signupfacebook.html',
+		controller:'facebookcontroller'
+	})
+	.when('/dashboard',{
+		templateUrl:'html/dashboard.html',
+		controller:'DashboardController'
+	})
 	
 })

@@ -9,7 +9,7 @@ var connection=mongoose.createConnection("mongodb://localhost/node-rest-auth")
 autoIncrement.initialize(connection);
 var bcrypt= require('bcrypt');
 var CVSchema = new Schema({
-	userid:{type: Schema.Types.ObjectId, ref: 'addUser'},
+	userid:{type: Schema.Types.String, ref: 'addUser'},
 	Location:String,
 	WorkExperience:Number,
 	ProfileDescription:String,
@@ -17,6 +17,8 @@ var CVSchema = new Schema({
 	Industry:String,
 	FunctionalArea:String,
 	EducationBackGround:Array,
+	MobileNumber:String,
+	FullName:String
 
 	
 });
@@ -28,6 +30,8 @@ exports.addcvdetails=function(req,res){
 	addCV.update({userid:req.body.userid},{
 		userid:req.body.userid,
 		Location:req.body.Location,
+		FullName:req.body.FullName,
+		MobileNumber:req.body.MobileNumber,
 	WorkExperience:req.body.WorkExperience,
 	ProfileDescription:req.body.ProfileDescription,
 	Keyskills:req.body.Keyskills,

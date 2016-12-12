@@ -1,4 +1,4 @@
-var app=angular.module('Vresume',['ngRoute','ngAnimate']);
+var app=angular.module('Vresume',['ngRoute','ngAnimate','ngFileUpload']);
 app.controller('MainController',['$location','$scope','$http','$routeParams','AuthService',function($location,$scope,$http,$routeParams,AuthService){
 	$scope.isAuthenticated=function(){
 		return AuthService.isAuthenticated()};

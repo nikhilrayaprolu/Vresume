@@ -9,6 +9,8 @@ app.controller('CvDetailsController-2',['$scope','$http','$location',function($s
 	$scope.functional_area='',
 	$scope.noofeducations=1;
 	$scope.arr=[];
+	$scope.FullName='';
+	$scope.MobileNumber='';
 	$scope.incrementeducation=function(){
 		$scope.noofeducations+=1;
 	}
@@ -16,8 +18,11 @@ app.controller('CvDetailsController-2',['$scope','$http','$location',function($s
 		return Array.apply(null, {length: N}).map(Number.call, Number);
 	};
 	$scope.submit=function(){
+		console.log($scope.username)
 		$http.post('/cvdetails',{
-			userid:$scope.userid,
+			FullName:$scope.FullName,
+			MobileNumber:$scope.MobileNumber,
+			userid:$scope.username,
 			Location:$scope.location,
 			WorkExperience:$scope.wexp,
 			ProfileDescription:$scope.profile_desc,
@@ -29,12 +34,10 @@ app.controller('CvDetailsController-2',['$scope','$http','$location',function($s
 				
 
 		}).then(function(resp){
-			if(cv2form.$valid)
-			{
 				console.log("form is valid");
-				console.log(req.params);
+				
 				$location.path('/cvdetails-3');
-			}
+			
 		})
 	};
 }]);

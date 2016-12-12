@@ -13,6 +13,8 @@
   <script type="text/javascript" src="../../bower_components/jquery/dist/jquery.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
 
+  <script src="../../bower_components/ng-file-upload-shim/ng-file-upload-shim.min.js"></script>
+  <script src="../../bower_components/ng-file-upload/ng-file-upload.min.js"></script>
 
   <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
 
@@ -26,7 +28,8 @@
   <script type="text/javascript" src="../controllers/signup.js"></script>
   <script type="text/javascript" src="../controllers/cvdetails-2.js"></script>
   <script type="text/javascript" src="../controllers/cvdetails-3.js"></script>
-
+  <script type="text/javascript" src="../controllers/signupfacebook.js"></script>  
+  <script type="text/javascript" src="../controllers/dashboard.js"></script>
 
 
   <script type="text/javascript" src="../services/service.js"></script>
@@ -40,6 +43,30 @@
 
     background-image: url("../Images/user-profile-bg.jpg");
   }
+  .thumb {
+    width: 24px;
+    height: 24px;
+    float: none;
+    position: relative;
+    top: 7px;
+}
+
+form .progress {
+    line-height: 15px;
+}
+}
+
+.progress {
+    display: inline-block;
+    width: 100px;
+    border: 3px groove #CCC;
+}
+
+.progress div {
+    font-size: smaller;
+    background: orange;
+    width: 0;
+}
   </style>
   <base href="/">
 </head>
