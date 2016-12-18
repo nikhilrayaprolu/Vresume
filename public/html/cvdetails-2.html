@@ -4,67 +4,86 @@
     <strong>CONGRATS!</strong> You have successfully registered.
   </div>
 
-	<h2>Professional and Educational details</h2>
-	
-<form name="cv2form">
+  <h2>Professional and Educational details</h2>
 
-<div class = "jumbotron">
-  <h3>Your contact information</h3>
-  <div class="form-group">
-    <label for="name">Please Enter your Full name:</label>
-     <input type="text" class="form-control" id="name" ng-model="FullName">
-   </div>
-     <div class="form-group">
-      <label for="mno">Enter your Mobile No.:</label>
-      <input type="number" ng-model="MobileNumber" class="form-control" id="mno">
+  <form name="cv2form">
+
+    <div class = "jumbotron">
+      <h3>Your contact information</h3>
+      <div class="form-group">
+        <label for="name">Please Enter your Full name:</label>
+        <input type="text" class="form-control" id="name" ng-model="FullName">
+      </div>
+      <div class="form-group">
+        <label for="mno">Enter your Mobile No.:</label>
+        <input type="number" ng-model="MobileNumber" class="form-control" id="mno">
+      </div>
+      <div class="form-group">
+        <label for="loc">Current Location:</label>
+        <input type="text" class="form-control" id="loc" ng-model="location">
+      </div>
     </div>
-    <div class="form-group">
-      <label for="loc">Current Location:</label>
-      <input type="text" class="form-control" id="loc" ng-model="location">
-    </div>
-  </div>
 
 
-  <div class = "jumbotron">
-  <h3>Your work experience</h3>
+    <div class = "jumbotron">
+      <h3>Your work experience</h3>
       <div class="form-inline">
-     <div class="form-group">
-      <label for="wexp">How much work experience do you have?:</label>
-      <input type="number" class="form-control" id="wexp" ng-model="wexp"><span>&nbsp;&nbsp;Years</span>
-    </div> 
-  </div>
+       <div class="form-group">
+        <label for="wexp">How much work experience do you have?:</label>
+        <input type="number" class="form-control" id="wexp" ng-model="wexp"><span>&nbsp;&nbsp;Years</span>
+      </div> 
+    </div>
     <div class="form-group">
       <label for="pd">Profile Description</label>
       <input type="text" class="form-control" id="pd" ng-model="profile_desc">
     </div>
     <div class="form-group">
-    <label for="ks">What are your KEY skills?:</label>
-     <input type="text" class="form-control" id="ks" ng-model="key_skills">
-   </div>
+      <label for="ks">What are your KEY skills?:</label>
+      <input type="text" class="form-control" id="ks" ng-model="key_skills">
+    </div>
     <div class="form-group">
-    <label for="industry">Which industry do you want to work in:</label>
-     <input type="text" class="form-control" id="industry" ng-model="industry">
-   </div>
+      <label for="industry">Which industry do you want to work in:</label>
+      <input type="text" class="form-control" id="industry" ng-model="industry">
+    </div>
     <div class="form-group">
-    <label for="func-area">What functional area do you want to work in?:</label>
-     <input type="text" class="form-control" id="func-area" ng-model="functional_area">
-   </div>
+      <label for="func-area">What functional area do you want to work in?:</label>
+      <input type="text" class="form-control" id="func-area" ng-model="functional_area">
+    </div>
   </div>
   
- <div class = "jumbotron">
-  <h3>Your educational background</h3>
-  <button class="btn button" ng-click="incrementeducation()">+</button>
+  <div class = "jumbotron">
+    <h3>Your educational background</h3>
+    <button class="btn button" ng-click="incrementeducation()">+</button>
     <div class="form-group">
-    <div ng-repeat="number in getNumber(noofeducations)">
+      <div ng-repeat="number in getNumber(noofeducations)">
 
-    <label for="degree{{number}}">List a degree:</label>
-     <input type="text" class="form-control" id="degree{{number}}" ng-model="arr[number]">
-   	{{arr[number]}}
-   </div>
+        <label for="degree{{number}}">List a degree:</label>
+        <input type="text" class="form-control" id="degree{{number}}" ng-model="arr[number]">
+        {{arr[number]}}
+      </div>
 
-</div>  
-  <button type="submit" class="btn btn-primary" ng-click="submit()">Next</button>
+    </div>
+    
+      </div>
+      <div class = "jumbotron">
+    <h3>Your Skills</h3>
+      <button class="btn button" ng-click="incrementskills()">+</button>
+      <div class="form-group">
+        <div ng-repeat="number in getNumber(noofskills)">
+
+          <label for="skill{{number}}">List a skill:</label>
+          
+          <input type="text" class="form-control" id="skill{{number}}" ng-model="skill[number]" ng-keyup="searchnow(skill[number])">
+          {{skill[number]}}
+          <div id="results">
+    <p ng-repeat="result in results">{{result.name}}</p>
   </div>
-</form>
+        </div>
+        </div>
+  
+
+      <button type="submit" class="btn btn-primary" ng-click="submit()">Next</button>
+    </div>
+  </form>
 
 </div>

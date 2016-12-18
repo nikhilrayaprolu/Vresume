@@ -8,12 +8,24 @@ app.controller('CvDetailsController-2',['$scope','$http','$location',function($s
 	$scope.industry='',
 	$scope.functional_area='',
 	$scope.noofeducations=1;
+	$scope.noofskills=1;
 	$scope.arr=[];
+	$scope.skill=[];
 	$scope.FullName='';
 	$scope.MobileNumber='';
-	$scope.incrementeducation=function(){
+	$scope.results=[];
+	$scope.searchnow=function(value){
+		$http.post('/searchskill',{searchtag:value}).then(function(response){
+			$scope.results=response.data;
+	});
+	};
+$scope.incrementeducation=function(){
 		$scope.noofeducations+=1;
 	}
+	$scope.incrementskills=function(){
+		$scope.noofskills+=1;
+	}
+
 	$scope.getNumber=function(N){
 		return Array.apply(null, {length: N}).map(Number.call, Number);
 	};
