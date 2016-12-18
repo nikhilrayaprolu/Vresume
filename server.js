@@ -63,6 +63,10 @@ app.get('/profile', isLoggedIn, function(req, res) {
 });
 app.post('/uploadphotos',upload.array('photos', 12),function(req,res){
   console.log(req.files);
+
+});
+app.post('/uploadphoto',upload.single('photos'),function(req,res){
+console.log(req.files);
 });
 app.post('/cvdetails',addCV.addcvdetails)
 
