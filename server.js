@@ -1,6 +1,6 @@
 var https = require('https');
 var fs = require('fs');
-
+var cors = require('cors');
 /*var options = {
   key: fs.readFileSync('VideoConferenceModule/fake-keys/key.pem'),
   cert: fs.readFileSync('VideoConferenceModule/fake-keys/cert.pem'),
@@ -29,12 +29,29 @@ var jwt = require('jwt-simple');
 //modules load
 var addUser=require("./models/user");
 var addCV=require("./models/cvuser");
+var addskills=require("./models/skills");
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 app.use(morgan('dev'));
 app.use(passport.initialize());
 app.use("/", express.static(__dirname + "/public"));
 app.use("/bower_components", express.static(__dirname + "/bower_components"));
+// after the code that uses bodyParser and other cool stuff
+var originsWhitelist = [
+    'http://localhost:4200',      //this is my front-end url for development
+
+    'http://www.myproductionurl.com'
+];
+var corsOptions = {
+    origin: function(origin, callback){
+        var isWhitelisted = originsWhitelist.indexOf(origin) !== -1;
+        callback(null, isWhitelisted);
+    },
+    credentials:true
+}
+
+//here is the magic
+app.use(cors(corsOptions));
 require('./config/passport')(passport);
 require('./config/passport1')(passport1);
 require('./config/passport2')(passport2);
@@ -61,15 +78,13 @@ app.get('/auth/google/callback',
 app.get('/profile', isLoggedIn, function(req, res) {
   res.send(req.user);
 });
-app.post('/uploadphotos',upload.array('photos', 12),function(req,res){
+app.post('/uploadphotos',upload.array('file', 12),function(req,res){
   console.log(req.files);
-
+  res.send(req.files);
 });
-app.post('/uploadphoto',upload.single('photos'),function(req,res){
-console.log(req.files);
-});
-app.post('/cvdetails',addCV.addcvdetails)
-
+app.post('/cvdetails',addCV.addcvdetails);
+app.post('/searchskill',addskills.retrieveskills);
+app.post('/addskills',addskills.addnewskills);
     // =====================================
     // FACEBOOK ROUTES =====================
     // =====================================
