@@ -28,7 +28,7 @@ var port = process.env.PORT || 8081;
 var jwt = require('jwt-simple');
 //modules load
 var addUser=require("./models/user");
-var addCV=require("./models/cvuser");
+var addCV1=require("./models/cvuser");
 var addskills=require("./models/skills");
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
@@ -82,7 +82,9 @@ app.post('/uploadphotos',upload.array('file', 12),function(req,res){
   console.log(req.files);
   res.send(req.files);
 });
-app.post('/cvdetails',addCV.addcvdetails);
+app.post('/getCV1',addCV1.getcv1details);
+app.post('/cv1',addCV1.addcv1details);
+app.post('/cvdetails',addCV1.addcv1details);
 app.post('/searchskill',addskills.retrieveskills);
 app.post('/addskills',addskills.addnewskills);
     // =====================================
