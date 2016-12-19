@@ -1,5 +1,5 @@
 
-app.controller('SignUpController',['$scope','$http','AuthService','$location',function($scope,$http,AuthService,$location){
+app.controller('SignUpEmpController',['$scope','$http','AuthService','$location',function($scope,$http,AuthService,$location){
 	if(AuthService.isAuthenticated()){
 //		console.log(AuthService.isAuthenticated());
 		$location.path('/dashboard');
@@ -12,7 +12,7 @@ app.controller('SignUpController',['$scope','$http','AuthService','$location',fu
 	$scope.LastName='',
 	$scope.email='',
 	$scope.phone='',
-	$scope.dob='',
+	$scope.CompanyName='',
 
 
 $scope.submit=function(){
@@ -23,11 +23,11 @@ AuthService.register({
 	LastName:$scope.LastName,
 	email:$scope.email,
 	phone:$scope.phone,
-	dob:$scope.dob,
-	userType:0,
+	CompanyName:$scope.CompanyName,
+	userType:1,
 }).then(function(msg) {
    AuthService.login({
-	name:$scope.name,
+	email:$scope.email,
 	password:$scope.password,
 
 }).then(function(msg) {
@@ -58,7 +58,7 @@ AuthService.register({
 }]);
 
 
-app.controller('SignInController',['$scope','$http','AuthService','$location',function($scope,$http,AuthService,$location){
+app.controller('SignInEmpController',['$scope','$http','AuthService','$location',function($scope,$http,AuthService,$location){
 
 	$scope.password='',
 			$scope.user={
@@ -78,7 +78,7 @@ $scope.submit=function(){
 }).then(function(msg) {
 	$scope.username=window.localStorage.user;
 	$scope.profilepic=window.localStorage.profilepic;
-	$scope.userType=0;
+	$scope.userType=1;
 	$scope.$digest();
 	console.log(msg);
       if($scope.userType==0){
