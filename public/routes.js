@@ -5,6 +5,16 @@ app.config(function($routeProvider){
 		controller:'SignUpController'
 
 	})
+	.when('/signupemployer',{
+		templateUrl:'html/signupemployer.html',
+		controller:'SignUpEmpController'
+
+	})
+	.when('/empdetatils-2',{
+		templateUrl:'html/empdetatils-2.html',
+		controller:'EmpDetailsController-2'
+
+	})
 	.when('/cvdetails-2',{
 		templateUrl:'html/cvdetails-2.html',
 		controller:'CvDetailsController-2'

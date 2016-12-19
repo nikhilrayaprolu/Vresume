@@ -9,7 +9,7 @@ var connection=mongoose.connect("mongodb://localhost/node-rest-auth")
 autoIncrement.initialize(connection);
 var bcrypt= require('bcrypt');
 var UserSchema = new Schema({
-	name:{
+	username:{
 		type:String,
 		unique:true,
 		//required:true
@@ -86,12 +86,12 @@ var addUser=connection.model('addUser',UserSchema);
 exports.addUser=addUser;
 exports.userSignUp=function(req,res){
 	console.log("cameuphere")
-	if(!req.body.name || !req.body.password){
+	if(!req.body.username || !req.body.password){
 		res.json({success:false,msg:'Please pass name and password.'});
 	}else{
 		console.log("cameupheretoo");
 		var newUser = new addUser({
-			name:req.body.name,
+            username:req.body.username,
 			password:req.body.password,
 			FirstName:req.body.FirstName,
 			LastName:req.body.LastName,
@@ -114,7 +114,7 @@ exports.userSignUp=function(req,res){
 	}
 }
 exports.findusertype=function(username,cb){
-	addUser.findOne({name:username},function(err,user){
+	addUser.findOne({username:username},function(err,user){
 		if(err) throw err;
 		if(user){
 			cb(user.userType);
@@ -124,7 +124,7 @@ exports.findusertype=function(username,cb){
 exports.getsearchresults=function(req,res){
 	searchtag='/.*'+req.body.searchtag+'.*/';
 	console.log(searchtag)
-	addUser.find({name:new RegExp('.*'+req.body.searchtag+'.*', "i")},'name',function(err,data){
+	addUser.find({username:new RegExp('.*'+req.body.searchtag+'.*', "i")},'username',function(err,data){
 		if(err){
 			console.log(err);
 			res.send(err);
@@ -136,7 +136,7 @@ exports.getsearchresults=function(req,res){
 }
 exports.authenticate=function(req,res){
 	addUser.findOne({
-		name:req.body.name
+        username:req.body.username
 	},function(err,user){
 		console.log(user);
 		if(err) throw err;
@@ -147,7 +147,7 @@ exports.authenticate=function(req,res){
 			user.comparePassword(req.body.password,function(err,isMatch){
 				if(isMatch && !err){
 					var token = jwt.encode(user,config.secret);
-					res.json({success:true,token:'JWT '+ token,group:user.group,username:user.name,profilepic:undefined,user:user});
+					res.json({success:true,token:'JWT '+ token,group:user.group,username:user.username,profilepic:undefined,user:user});
 				}else{
 					res.send({success:false,msg:'Authentication failed.wrong Password.'});
 				}
