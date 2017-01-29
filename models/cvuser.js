@@ -61,3 +61,12 @@ exports.addcv1details=function(req,res){
 		}
 	})
 }
+exports.getallcvs=function (req,res) {
+	addCV1.find({},function (err,data) {
+		if(err){
+			res.send(err)
+		}else{
+			res.json(data);
+		}
+    })
+}
